@@ -52,14 +52,12 @@ export default function Home() {
 
   useEffect(() => {
     if (addresses.length) {
-      console.log('ADDRESSES', addresses);
       getTokenBalances(addresses).then(({
-        balancesByAddress,
+        balances,
         totalBalanceUSD,
       }) => {
-        console.log(totalBalanceUSD);
         setBalance(totalBalanceUSD);
-        setBalancesByAddress(balancesByAddress);
+        setBalancesByAddress(balances);
       });
     }
   }, [addresses]);
@@ -83,7 +81,7 @@ export default function Home() {
                 <b>{` $${balance.toFixed(2)}`}</b>
               </Text>
               <Text as="h2" fontSize={['md', 'md', 'lg']} color={useColorModeValue('neutralD.100', 'white')}>
-                {balance < 1000000 ? 'Not accredited. Stop being poor.' : 'Accredited :)'}
+                {balance < 1000000 ? 'Not accredited 🙅 You have less than a million dollars. Stop being poor.' : 'Accredited :)'}
               </Text>
               {/* <Text as="h2" fontSize={['xs', 'sm', 'sm']} color="grey">Games from the Binance Smart Chain (BSC), Ethereum Mainnet, Ronin, Wax, Polygon, Harmony, and Hive blockchains</Text> */}
             </Flex>

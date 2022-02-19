@@ -8,16 +8,16 @@ export const getTokenBalances = async (addresses: [String]) => {
   // API KEY is public, not sensitive
   const res = await fetch(url, { method: 'GET' });
   const resJson = await res.json();
-  const balancesByAddress = {};
+  const balances = {};
   let totalBalanceUSD = 0;
   for (const key in resJson) {
     if (resJson[key].meta) {
-      balancesByAddress[key] = resJson[key].meta[0].value;
+      balances[key] = resJson[key].meta[0].value;
       totalBalanceUSD += resJson[key].meta[0].value;
     }
   }
   return {
-    balancesByAddress,
+    balances,
     totalBalanceUSD,
   };
 };
