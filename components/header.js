@@ -111,6 +111,7 @@ function ExternalLink(props) {
 function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { connection } = useWallet();
+  const WrappedConnectWalletButton = chakra(ConnectWallet);
 
   return (
     <Box
@@ -128,10 +129,10 @@ function Header() {
           <HStack justify="space-between" w="100%" h={16}>
             {/* <AvatarNavigation /> */}
             <HStack ml={-4} spacing={2}>
-              <NavLink href="/" name="Up Only Games" />
+              <NavLink href="/" name="Commenda" />
               {/* <NavLink href="/blog" name="Blog" />
               <NavLink href="/newsletter" name="Newsletter" /> */}
-              <ConnectWallet borderColor="green.500" width="40px" />
+              <WrappedConnectWalletButton borderColor="green.500" width="40px" />
               {/* <div>{connection.ens || connection.userAddress}</div> */}
               {/* <NavLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
               {/* <ExternalLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}

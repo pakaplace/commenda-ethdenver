@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Stack,
   Flex,
@@ -17,6 +17,7 @@ import {
 
 } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import { useWallet } from '@web3-ui/core';
 import ScrollableTable from '@/components/new/table-expandable';
 import PageTransition from '../components/page-transitions';
 import Section from '@/components/section';
@@ -24,6 +25,7 @@ import Section from '@/components/section';
 import { getGames } from '../lib/dappradar';
 import { SubmitNotification } from '@/components/new/alert';
 import InterestTag from '@/components/interest-tag';
+import { getTokenBalances } from '../lib/zapper.ts';
 
 // import BlogCard from '@/components/blog-card';
 // import NewsletterDrawer from '@/components/newsletter-modal';
@@ -36,7 +38,32 @@ import InterestTag from '@/components/interest-tag';
 const DynamicChatbox = dynamic(() => import('@/components/chatbox'));
 
 const chains = ['Binance Smart Chain', 'Ethereum Mainnet', 'Ronin', 'Wax', 'Polygon', 'Harmony', 'Hive'];
-export default function Blog({ dapps }) {
+export default function Home() {
+  const { connection } = useWallet();
+  const [addresses, setAddresses] = useState([]);
+  const [balance, setBalance] = useState(0);
+  const [balancesByAddress, setBalancesByAddress] = useState(0);
+
+  useEffect(() => {
+    if (!addresses.includes(connection.userAddress) && connection.userAddress?.length) {
+      setAddresses((prev) => prev.concat(connection.userAddress));
+    }
+  }, [connection]);
+
+  useEffect(() => {
+    if (addresses.length) {
+      console.log('ADDRESSES', addresses);
+      getTokenBalances(addresses).then(({
+        balancesByAddress,
+        totalBalanceUSD,
+      }) => {
+        console.log(totalBalanceUSD);
+        setBalance(totalBalanceUSD);
+        setBalancesByAddress(balancesByAddress);
+      });
+    }
+  }, [addresses]);
+
   return (
     <PageTransition>
       {/* <SubmitNotification /> */}
@@ -46,16 +73,17 @@ export default function Blog({ dapps }) {
           {/* <NewsletterModal /> */}
           <VStack>
             <Flex justify="start" w="100%" direction="column" spacing={4} mb={[4, 8]}>
-              <Text as="h1" fontSize={['2xl', '3xl', '5xl']} fontWeight="semibold" color={useColorModeValue('neutralD.100', 'white')}>Up Only Games</Text>
+              <Text as="h1" fontSize={['2xl', '3xl', '5xl']} fontWeight="semibold" color={useColorModeValue('neutralD.100', 'white')}>Commenda</Text>
               <Text as="h2" fontSize={['md', 'md', 'lg']} color={useColorModeValue('neutralD.100', 'white')}>
-                Compare
-                {' '}
-                <b> daily earnings </b>
-                {' '}
-                from top crypto games, reported by
-                <b> real users.</b>
-                {' '}
-                Start building passive income by playing games.
+                Your wallets -
+                <b>{` ${Object.keys(balancesByAddress).join(', ')}`}</b>
+              </Text>
+              <Text as="h2" fontSize={['md', 'md', 'lg']} color={useColorModeValue('neutralD.100', 'white')}>
+                Your balances -
+                <b>{` $${balance.toFixed(2)}`}</b>
+              </Text>
+              <Text as="h2" fontSize={['md', 'md', 'lg']} color={useColorModeValue('neutralD.100', 'white')}>
+                {balance < 1000000 ? 'Not accredited. Stop being poor.' : 'Accredited :)'}
               </Text>
               {/* <Text as="h2" fontSize={['xs', 'sm', 'sm']} color="grey">Games from the Binance Smart Chain (BSC), Ethereum Mainnet, Ronin, Wax, Polygon, Harmony, and Hive blockchains</Text> */}
             </Flex>
