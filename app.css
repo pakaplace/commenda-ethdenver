@@ -1,0 +1,13 @@
+/* .str-chat__main-panel {
+    height: 50% !important
+} */
+.str-chat__container {
+    height: 80% !important
+}
+.str-chat__virtual-list-message-wrapper {
+    padding: 8px !important
+}
+
+str-chat__message-text-inner str-chat__message-simple-text-inner{
+    font-size: 10px !important
+}

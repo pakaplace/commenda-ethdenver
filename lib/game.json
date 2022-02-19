@@ -1,0 +1,37 @@
+{
+  "id": 4600,
+  "name": "PancakeSwap",
+  "slug": "pancakeswap",
+  "new": false,
+  "statistic": {
+    "balance": 0,
+    "balanceInFiat": 0,
+    "totalBalanceInFiat": 1774195302.69,
+    "graph": "https://s3.amazonaws.com/dapp-activity.dappradar.com/bsc_4600_0966d2b554616381f9ed607c38e69a29.png",
+    "exchangeRate": 1,
+    "currencyName": "usd",
+    "transactionCount": 965130,
+    "userActivity": 362641,
+    "volumeInFiat": 94412848.57,
+    "totalVolumeInFiat": 230865042.28,
+    "totalVolumeChangeInFiat": 2.56,
+    "changes": {
+      "dau": { "status": "+5.82%", "label": "positive" },
+      "volume": { "status": "+6.69%", "label": "positive" },
+      "tx": { "status": "+8.68%", "label": "positive" },
+      "tokenVolume": { "status": "-0.11%", "label": "negative" },
+      "totalVolume": { "status": "+2.56%", "label": "positive" },
+      "totalBalance": { "status": "-6.13%", "label": "negative" }
+    }
+  },
+  "godzillaId": null,
+  "slugs": { "binance-smart-chain": "pancakeswap" },
+  "logo": "https://dashboard-assets.dappradar.com/document/4600/pancakeswap-dapp-defi-bsc-logo-50x50_20e5d8b6c50c2cead9eb33120e4e1417.png",
+  "deepLink": "https://dappradar.com/deeplink/4600?partner=egamers",
+  "mobileFriendly": false,
+  "featured": false,
+  "protocols": ["binance-smart-chain"],
+  "activeProtocols": ["binance-smart-chain"],
+  "category": "defi",
+  "tracked": true
+}
