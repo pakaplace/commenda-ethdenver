@@ -42,13 +42,14 @@ import Container from './container';
 import AvatarNavigation from './avatar-navigation';
 
 function NavLink(props) {
-  const { href, name, ...rest } = props;
+  const {
+    href, name, active, ...rest
+  } = props;
   let isActive = false;
   const { pathname } = useRouter();
 
   if (href !== '/') {
     const [, group] = href.split('/');
-
     isActive = pathname.includes(group);
   } else if (href === pathname) {
     isActive = true;
@@ -57,7 +58,7 @@ function NavLink(props) {
   return (
     <NextLink href={href} passHref>
       <Button
-        aria-current={isActive ? 'page' : undefined}
+        // aria-current={isActive ? 'page' : undefined}
         variant="ghost"
         size="md"
         {...rest}
