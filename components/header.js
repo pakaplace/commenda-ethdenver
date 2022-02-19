@@ -34,6 +34,7 @@ import {
   DotsHorizontalIcon,
   DocumentReportIcon,
 } from '@heroicons/react/solid';
+import { ConnectWallet, useWallet } from '@web3-ui/core';
 
 import Link from 'next/link';
 import ThemeToggle from './theme-toggle';
@@ -109,6 +110,7 @@ function ExternalLink(props) {
 
 function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { connection } = useWallet();
 
   return (
     <Box
@@ -129,8 +131,10 @@ function Header() {
               <NavLink href="/" name="Up Only Games" />
               {/* <NavLink href="/blog" name="Blog" />
               <NavLink href="/newsletter" name="Newsletter" /> */}
+              <ConnectWallet borderColor="green.500" width="40px" />
+              {/* <div>{connection.ens || connection.userAddress}</div> */}
               {/* <NavLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
-              <ExternalLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" />
+              {/* <ExternalLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
               {/* <Menu isOpen={isOpen}>
                 <MenuButton
                   bg={useColorModeValue('neutral.100', 'neutralD.300')}
