@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   HStack,
   VStack,
@@ -11,27 +11,32 @@ import {
   Image as ChakraImage,
   Icon,
   Link,
-} from "@chakra-ui/react";
-import Image from "next/image";
-import { EyeIcon, StarIcon } from "@heroicons/react/solid";
-import StarIconRating from "./star-rating";
-import { format, render, cancel, register } from "timeago.js";
+} from '@chakra-ui/react';
+import Image from 'next/image';
+import { EyeIcon, StarIcon } from '@heroicons/react/solid';
+import {
+  format, render, cancel, register,
+} from 'timeago.js';
+import StarIconRating from './star-rating';
 
-const BookCard = ({ title, author, rating, isFavorite, cover, dateRead }) => {
+function BookCard({
+  title, author, rating, isFavorite, cover, dateRead,
+}) {
   return (
     <a
       href={
-        "https://www.goodreads.com/search?utf8=%E2%9C%93&q=" +
-        encodeURIComponent(title)
+        `https://www.goodreads.com/search?utf8=%E2%9C%93&q=${
+          encodeURIComponent(title)}`
       }
       target="_blank"
+      rel="noreferrer"
     >
       <HStack
         p={4}
-        bg={useColorModeValue("white", "neutralD.100")}
+        bg={useColorModeValue('white', 'neutralD.100')}
         rounded="lg"
         borderWidth="1px"
-        borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+        borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
         w="100%"
         textAlign="left"
         align="start"
@@ -40,7 +45,7 @@ const BookCard = ({ title, author, rating, isFavorite, cover, dateRead }) => {
         position="relative"
         transition="all 0.3s"
         transition-timing-function="spring(1 100 10 10)"
-        _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
+        _hover={{ transform: 'translateY(-4px)', shadow: 'lg' }}
       >
         <Box
           rounded="md"
@@ -52,11 +57,11 @@ const BookCard = ({ title, author, rating, isFavorite, cover, dateRead }) => {
           bottom={4}
         >
           <Image
-            src={cover ? cover[0].thumbnails.large.url : "/"}
+            src={cover ? cover[0].thumbnails.large.url : '/'}
             height={96}
             width={60}
             layout="responsive"
-          ></Image>
+          />
         </Box>
         <VStack
           align="start"
@@ -72,7 +77,7 @@ const BookCard = ({ title, author, rating, isFavorite, cover, dateRead }) => {
             </Text>
             <Text
               fontSize="md"
-              color={useColorModeValue("neutral.900", "neutralD.1000")}
+              color={useColorModeValue('neutral.900', 'neutralD.1000')}
             >
               {author}
             </Text>
@@ -87,6 +92,6 @@ const BookCard = ({ title, author, rating, isFavorite, cover, dateRead }) => {
       </HStack>
     </a>
   );
-};
+}
 
 export default BookCard;

@@ -1,14 +1,14 @@
-const title = 'Highest Earning Play-to-Earn Games';
-const description = 'See user-reported earnings from top blockchain games. Browse free-to-play and NFT games.';
+const title = 'Commenda NFT Accredidation';
+const description = 'Get instantly accredited. Accredidation is useful for making angel investments.';
 
 const SEO = {
   title,
   description,
-  canonical: 'https://uponlygames.com',
+  canonical: 'https://commenda.com',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://uponlygames.com',
+    url: 'https://commenda.com',
     title,
     description,
     images: [

@@ -52,7 +52,8 @@
     "swr": "^1.0.1",
     "timeago.js": "^4.0.2",
     "trim": "^0.0.3",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "@openzeppelin/contracts": "^3.2.0"
   },
   "scripts": {
     "dev": "next dev",
@@ -72,6 +73,8 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.1",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "hardhat": "2.6.0",
+    "hardhat-deploy": "^0.9.0"
   }
 }
