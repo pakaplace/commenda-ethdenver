@@ -55,7 +55,7 @@ const Footer = () => {
           © {date} Daniel Wirtz{" "}
         </Text> */}
         <HStack spacing={4}>
-          <Link href="https://twitter.com/" isExternal unstyled>
+          <Link href="https://twitter.com/" isexternal="true" unstyled="true">
             <IconButton
               size="sm"
               icon={<Icon as={TwitterLogo} weight="fill" />}
@@ -64,8 +64,8 @@ const Footer = () => {
           </Link>
           <Link
             href="https://www.youtube.com"
-            unstyled
-            isExternal
+            unstyled="true"
+            isexternal="true"
           >
             <IconButton
               size="sm"
