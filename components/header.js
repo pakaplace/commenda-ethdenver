@@ -22,6 +22,7 @@ import {
   Icon,
   Avatar,
   useDisclosure,
+  Modal,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -39,7 +40,9 @@ import { ConnectWallet, useWallet } from '@web3-ui/core';
 import Link from 'next/link';
 import ThemeToggle from './theme-toggle';
 import Container from './container';
+import ButtonWithModal from './button-with-modal';
 import AvatarNavigation from './avatar-navigation';
+import UploadFileForm from './upload-file-form';
 
 function NavLink(props) {
   const {
@@ -134,6 +137,9 @@ function Header() {
               {/* <NavLink href="/blog" name="Blog" />
               <NavLink href="/newsletter" name="Newsletter" /> */}
               <WrappedConnectWalletButton borderColor="green.500" width="40px" />
+              <ButtonWithModal ButtonText="Upload SAFE" ModalTitle="Upload SAFE Note" SubmitButtonText="Submit" onClickSubmit={() => console.log("Click!")}>
+                  <UploadFileForm/>
+              </ButtonWithModal>
               {/* <div>{connection.ens || connection.userAddress}</div> */}
               {/* <NavLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
               {/* <ExternalLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
