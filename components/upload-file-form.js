@@ -10,24 +10,29 @@ import { Formik } from 'formik';
 import React from 'react';
 
 function UploadFileForm() {
-    function validateName(value) {
-      let error
-      if (!value) {
-        error = 'Name is required'
-      } else if (value.toLowerCase() !== 'naruto') {
-        error = "Jeez! You're not a fan 😱"
-      }
-      return error
-    }
-      return (
-    <FormControl>
-        <FormLabel>SAFE Name</FormLabel>
-        <Input placeholder='Name' />
+    return (
+        <form method="POST" action="/api/mailForm">
+            <FormControl isRequired="true">
+                <FormLabel>Company Name</FormLabel>
+                <Input name="CompanyName" placeholder='Name' />
 
-        <FormLabel>SAFE Note (PDF)</FormLabel>
-        <Input type="file"/>
-      </FormControl>
-)
-  }
+                <FormLabel>SAFE Note (PDF)</FormLabel>
+                <Input name="SAFE Note" type="file" />
+            </FormControl>
+
+            <FormControl isRequired="true">
+                <FormLabel>Company Representative</FormLabel>
+                <Input name="companyRepName" placeholder='Name' />
+                <Input name="companyRepEmail" placeholder='address@startup.io' />
+            </FormControl>
+
+            <FormControl isRequired="true">
+                <FormLabel>Investor </FormLabel>
+                <Input name="investorName" placeholder='Name' />
+                <Input name="investorEmail" placeholder='address@investor.com' />
+            </FormControl>
+            <Button  colorScheme='blue' type="submit"> Submit </Button>
+        </form>)
+}
 
 export default UploadFileForm

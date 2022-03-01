@@ -21,7 +21,7 @@ const AuthorCard = ({ readingTime, publishedAt, url }) => {
         <Avatar src="/avatar-small.jpg" h={10} w={10}></Avatar>
         <VStack spacing={0} align="start">
           <Text fontSize="md" fontWeight="500">
-            Daniel Wirtz
+            Commenda
           </Text>
           <Text fontSize="sm" color={useColorModeValue("gray.500", "gray.200")}>
             {format(publishedAt)} • {readingTime}

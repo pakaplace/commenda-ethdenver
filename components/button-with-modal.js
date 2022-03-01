@@ -26,14 +26,7 @@ export function ButtonWithModal(props) {
             <ModalBody>
               {props.children}
             </ModalBody>
-  
-            <ModalFooter>
-              <Button variant='ghost' colorScheme='blue' onClick={props.onClickSubmit}>{props.SubmitButtonText}</Button>
-              <Button variant='ghost' colorScheme='red' mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
+            </ModalContent>
         </Modal>
       </>
     );
