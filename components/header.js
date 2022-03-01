@@ -44,6 +44,7 @@ import ButtonWithModal from './button-with-modal';
 import AvatarNavigation from './avatar-navigation';
 import UploadFileForm from './upload-file-form';
 import SignInSignOutButton from './sign-in-sign-out-button';
+import GenerateSafeForm from './generate-safe-form';
 
 function NavLink(props) {
   const {
@@ -140,6 +141,9 @@ function Header() {
               <WrappedConnectWalletButton borderColor="green.500" width="40px" />
               <ButtonWithModal ButtonText="Upload SAFE" ModalTitle="Upload SAFE Note" >
                   <UploadFileForm/>
+              </ButtonWithModal>
+              <ButtonWithModal ButtonText="Generate SAFE" ModalTitle="Generate SAFE Note" >
+                  <GenerateSafeForm/>
               </ButtonWithModal>
               {/* <div>{connection.ens || connection.userAddress}</div> */}
               {/* <NavLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
