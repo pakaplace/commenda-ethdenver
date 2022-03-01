@@ -43,6 +43,7 @@ import Container from './container';
 import ButtonWithModal from './button-with-modal';
 import AvatarNavigation from './avatar-navigation';
 import UploadFileForm from './upload-file-form';
+import SignInSignOutButton from './sign-in-sign-out-button';
 
 function NavLink(props) {
   const {
@@ -217,6 +218,7 @@ function Header() {
               </Menu> */}
             </HStack>
             <HStack>
+              <SignInSignOutButton/>
               <ThemeToggle />
             </HStack>
           </HStack>
