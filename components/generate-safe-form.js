@@ -12,7 +12,7 @@ import React from 'react';
 
 function GenerateSafeForm() {
     return (
-        <form method="POST" action="/api/mailForm">
+        <form method="POST" action="/api/generateSafe">
             <FormControl isRequired="true">
                 <FormLabel>Company Name</FormLabel>
                 <Input name="CompanyName" placeholder='Commenda Technologies, Inc.' />
