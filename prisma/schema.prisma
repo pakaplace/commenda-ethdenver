@@ -66,12 +66,20 @@ model SafeNote {
   companyName String
   dateOfIncorporation DateTime @db.Date
   stateOfIncorporation String // Assume US state for now.
+  companyAddress String
+  companyRepresentativeName String
+  companyRepresentativeTitle String
+  companyRepresentativeEmail String
 
   // Investor metadata: 
+  investorAddress String
   investorName String
+  investorTitle String
+  investorEmail String
 
   // Investment data:
   purchaseAmount Decimal @db.Money	
+  purchaseDate DateTime @db.Date
   // Optional investment fields, SAFE notes may or may not have these:
   valuationCap Decimal? @db.Money	
   discountRate Decimal? 
