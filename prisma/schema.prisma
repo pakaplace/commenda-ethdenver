@@ -50,6 +50,9 @@ model User {
 
   // Stuff owned by the user:
   safeNotes     SafeNote[]
+  // Docusign Integration:
+  docusignAccessToken String? 
+  docusignAccessTokenExpires DateTime?
 }
 
 model VerificationToken {

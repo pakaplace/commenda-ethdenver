@@ -66,7 +66,7 @@ function GenerateSafeForm() {
 
                     <FormLabel>Purchase Amount, USD  </FormLabel>
                     <Input type="number" step="0.01" name="purchaseAmount" placeholder='$0.00'/>
-                    <FormLabel>Valuation Cap, USD (optional) </FormLabel>
+                    <FormLabel>Valuation Cap, USD </FormLabel>
                     <Input type="number" step="0.01" name="valuationCap" placeholder='$0.00'/>
                 </VStack>
             </FormControl>

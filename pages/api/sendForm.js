@@ -1,5 +1,11 @@
+import { Prisma, PrismaClient } from '@prisma/client';
+import { getSession } from "next-auth/react"
 import docusign from 'docusign-esign';
 import fs from 'fs';
+import { env } from 'process';
+import { notValidDateWarning } from 'stream-chat-react';
+
+// TODO: Get these from request. 
 
 const RECIPIENT = {
   name: 'Rohan Ramchand',
@@ -17,33 +23,51 @@ const DOCUSIGN_BASE_URL = 'https://demo.docusign.net';
 
 const DOCUSIGN_INTEGRATION_KEY = '4723f1f4-ec4b-43ba-b83f-9cb0c3d8298e';
 
-const TEMPLATE_ID = '';
+const TEMPLATE_ID = '222ce673-455a-4c83-8509-5f242ab0f6c0';
 
+const sendForm = async (req, res) => {
+  // this should be a post
+  const session = await getSession({ req });
+  if (!session) {
+      console.log("Unauthenticated:")
+      return res.status(403).json({ error: "Unauthenticated" });
+  }
+  const prisma = new PrismaClient();
+  const user = await prisma.user.findUnique({
+      where: {
+        email: session.user.email,
+      },
+      select: {
+        docusignAccessToken: true,
+        docusignAccessTokenExpires: true,
+      }
+  });
+  const envelope = new docusign.EnvelopeDefinition();
+  envelope.templateId = TEMPLATE_ID;
 
-const authenticate = async () => {
-  const jwtLifetime = 10 * 60; // request 10 minutes
+  // TODO: Fill in template with form contents:
+  const signer = docusign.TemplateRole.constructFromObject({
+    ...RECIPIENT,
+    roleName: 'signer',
+  });
+
+  envelope.templateRoles = [signer];
+  envelope.status = 'sent';
+
   const api = new docusign.ApiClient();
-  api.setOAuthBasePath('account-d.docusign.com');
+  api.setBasePath(`${DOCUSIGN_BASE_URL}/restapi`);
+  api.addDefaultHeader('Authorization', `Bearer ${user.docusignAccessToken}`);
 
-  const rsaKey = fs.readFileSync('/Users/rohanramchand/tmp/commenda/jwtRS256.key');
+  const envelopesApi = new docusign.EnvelopesApi(api);
+  const results = await envelopesApi.createEnvelope(
+    DOCUSIGN_ACCOUNT_ID, {envelopeDefinition: envelope});
+  console.log(results);
 
-  const { body: { access_token: accessToken } } = await api.requestJWTUserToken(
-    DOCUSIGN_INTEGRATION_KEY,
-    DOCUSIGN_USER_ID,
-    ['signature', 'impersonation'],
-    rsaKey,
-    jwtLifetime,
-  );
+  return res.status(200).json({});
 
-  const { accounts } = await api.getUserInfo(accessToken);
-  const { accountId, baseUri } = accounts.find(account => account.isDefault === 'true');
 
-  return {
-    accessToken,
-    accountId,
-    basePath: `${baseUri}/restapi`,
-  };
+ 
+
 };
 
-
-authenticate().then(console.log);
+export default sendForm;
