@@ -17,7 +17,7 @@ const REQ_BODY = {
   purchaseDate: '2022-03-07',
   purchaseAmount: '12456',
   valuationCap: '123',
-}
+};
 
 // TODO: Use env variables.
 const DOCUSIGN_ACCOUNT_ID = '3d434dd3-1d94-4fac-b62d-56b83a9281e5';
@@ -89,7 +89,7 @@ const sendForm = async (req, res) => {
     const results = await envelopesApi.createEnvelope(DOCUSIGN_ACCOUNT_ID, { envelopeDefinition: envelope });
     console.log(results);
   } catch (error) {
-    console.log('error' + error);
+    console.log(`error${error}`);
     return error;
   }
 
