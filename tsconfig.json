@@ -47,5 +47,8 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "rules": {
+    "react/jsx-props-no-spreading": "off"
+  }
 }

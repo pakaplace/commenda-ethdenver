@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Stack,
-  Button,
   Text,
   VStack,
   useColorModeValue,
-  Tag,
-  HStack,
   Center,
 } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
 import PageTransition from '../components/page-transitions';
 import GenerateSafeForm from '../components/generate-safe-form';
 
 export default function Home() {
-  const router = useRouter();
-  useEffect(async () => {
-    if (!router.isReady) return;
-    const response = fetch('/api/sendForm');
-    if (response.ok) {
-      window.location.href = '/';
-    }
-  }, [router.isReady]);
-
-  // this should be a post
-
+  // const router = useRouter();
+  // useEffect(async () => {
+  //   if (!router.isReady) return;
+  //   // this should be a post
+  //   const response = fetch(
+  //     '/api/sendForm',
+  //     {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(objectWithData),
+  //     },
+  //   );
+  //   console.log("sendForm response: " + response);
+  //   if (response.ok) {
+  //     router.push('/');
+  //   }
+  // }, [router.isReady]);
   return (
     <PageTransition>
       <Center justify="center">

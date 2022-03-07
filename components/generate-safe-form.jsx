@@ -1,23 +1,19 @@
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Button,
   Input,
   Select,
   Textarea,
   VStack,
-  NumberInput,
 } from '@chakra-ui/react';
-import { Formik } from 'formik';
 import React from 'react';
 
 function GenerateSafeForm() {
   const spacing = '8px';
   const todaysDate = new Date().toISOString().split('T')[0];
   return (
-    <form method="POST" action="/api/generateSafe">
+    <form method="POST" action="/api/sendForm">
       <VStack spacing="40px">
         <FormControl isRequired="true">
           <VStack spacing={spacing}>
@@ -58,19 +54,17 @@ function GenerateSafeForm() {
             <Input type="email" name="companyRepresentativeEmail" placeholder="ceo@startup.io" />
           </VStack>
         </FormControl>
-        <>
-          <FormControl isRequired="true">
-            <VStack spacing={spacing}>
-              <FormLabel>Purchase Date</FormLabel>
-              <Input name="purchaseDate" type="date" min={todaysDate} defaultValue={todaysDate} />
+        <FormControl isRequired="true">
+          <VStack spacing={spacing}>
+            <FormLabel>Purchase Date</FormLabel>
+            <Input name="purchaseDate" type="date" min={todaysDate} defaultValue={todaysDate} />
 
-              <FormLabel>Purchase Amount, USD  </FormLabel>
-              <Input type="number" step="0.01" name="purchaseAmount" placeholder="$0.00" />
-              <FormLabel>Valuation Cap, USD </FormLabel>
-              <Input type="number" step="0.01" name="valuationCap" placeholder="$0.00" />
-            </VStack>
-          </FormControl>
-        </>
+            <FormLabel>Purchase Amount, USD  </FormLabel>
+            <Input type="number" step="0.01" name="purchaseAmount" placeholder="$0.00" />
+            <FormLabel>Valuation Cap, USD </FormLabel>
+            <Input type="number" step="0.01" name="valuationCap" placeholder="$0.00" />
+          </VStack>
+        </FormControl>
 
         <Button colorScheme="blue" type="submit"> Submit </Button>
       </VStack>

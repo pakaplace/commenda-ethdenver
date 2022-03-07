@@ -140,11 +140,8 @@ function Header() {
               {/* <NavLink href="/blog" name="Blog" />
               <NavLink href="/newsletter" name="Newsletter" /> */}
               <WrappedConnectWalletButton borderColor="green.500" width="40px" />
-              <ButtonWithModal ButtonText="Upload SAFE" ModalTitle="Upload SAFE Note">
-                <RedirectToDocusign />
-              </ButtonWithModal>
               <ButtonWithModal ButtonText="Generate SAFE" ModalTitle="Generate SAFE Note">
-                <GenerateSafeForm />
+                <RedirectToDocusign />
               </ButtonWithModal>
               {/* <div>{connection.ens || connection.userAddress}</div> */}
               {/* <NavLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
