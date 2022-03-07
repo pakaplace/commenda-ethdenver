@@ -9,14 +9,10 @@ import {
   HStack,
   Center,
 } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
 import { ConnectWallet, useWallet } from '@web3-ui/core';
-import ScrollableTable from '@/components/new/table-expandable';
 import PageTransition from '../components/page-transitions';
-// import { getAllPosts } from '../lib/airtable';
 import { getTokenBalances } from '../lib/zapper.ts';
 
-const chains = ['Binance Smart Chain', 'Ethereum Mainnet', 'Ronin', 'Wax', 'Polygon', 'Harmony', 'Hive'];
 export default function Home() {
   const { connection } = useWallet();
   const [addresses, setAddresses] = useState([]);
@@ -43,7 +39,6 @@ export default function Home() {
 
   return (
     <PageTransition>
-      {/* <SubmitNotification /> */}
       <Center justify="center">
         <Stack justify="center" direction={['column', 'row', 'row', 'row']} spacing={4} border="2px" borderColor={useColorModeValue('neutralD.200', 'white')} p={4} rounded="lg" minW="40%">
           <VStack align="center" justify="center" borderColor="red" spacing={4}>

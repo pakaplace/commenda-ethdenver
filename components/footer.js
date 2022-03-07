@@ -47,13 +47,7 @@ function Footer() {
         display={{ base: 'none', md: 'flex' }}
         my={8}
       >
-        <FooterLink href="mailto:hello@poktstakingpool.com" name="Contact Us" />
-        {/* <Text
-          fontSize="sm"
-          color={useColorModeValue("neutral.800", "neutralD.800")}
-        >
-          © {date} Daniel Wirtz{" "}
-        </Text> */}
+        <FooterLink href="mailto:yaacov@commenda.io" name="Contact Us" />
         <HStack spacing={4}>
           <Link href="https://twitter.com/" isexternal="true" unstyled="true">
             <IconButton
