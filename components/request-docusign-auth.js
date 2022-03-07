@@ -1,3 +1,5 @@
+import { useSession, signIn } from 'next-auth/react';
+
 function RedirectToDocusign() {
   const searchParams = new URLSearchParams({
     response_type: 'code',
@@ -6,8 +8,15 @@ function RedirectToDocusign() {
     state: 'foobar',
     redirect_uri: 'http://localhost:3000/auth/docusign/callback',
   });
-  window.location.href = `https://account-d.docusign.com/oauth/auth?${searchParams}`;
-  return null;
+
+  const docusignAuth = `https://account-d.docusign.com/oauth/auth?${searchParams}`;
+
+  const { data: session } = useSession();
+  if (session) {
+    window.location.href = docusignAuth;
+  } else {
+    signIn(null, { callbackUrl: docusignAuth });
+  }
 }
 
 export default RedirectToDocusign;

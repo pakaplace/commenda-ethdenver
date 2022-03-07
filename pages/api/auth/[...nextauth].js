@@ -5,6 +5,9 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+const redirectBaseUrlAllowlist = ['https://account-d.docusign.com'];
+
+
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
   // TODO: Support username+password auth.
@@ -18,4 +21,15 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    redirect({ url, baseUrl }) {
+      if (url.startsWith(baseUrl)) return url;
+      // Allows relative callback URLs
+      if (url.startsWith('/')) return new URL(url, baseUrl).toString();
+      if (redirectBaseUrlAllowlist.some((element) => url.startsWith(element))) {
+        return url;
+      }
+      return baseUrl;
+    },
+  },
 });
