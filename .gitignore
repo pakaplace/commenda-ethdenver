@@ -68,4 +68,7 @@ yarn-error.log
 
 # next.js
 /.next/
-/out/% 
+/out/%
+
+# Vim
+.*[.]sw[op]
