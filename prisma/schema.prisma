@@ -39,6 +39,7 @@ model Session {
 }
 
 model User {
+  // Next-auth fields & user metadata: 
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
@@ -46,6 +47,9 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  // Stuff owned by the user:
+  safeNotes     SafeNote[]
 }
 
 model VerificationToken {
@@ -54,4 +58,34 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model SafeNote {
+  id Int @id @default(autoincrement())	
+  // Company metadata: 
+  companyName String
+  dateOfIncorporation DateTime @db.Date
+  stateOfIncorporation String // Assume US state for now.
+  companyAddress String
+  companyRepresentativeName String
+  companyRepresentativeTitle String
+  companyRepresentativeEmail String
+
+  // Investor metadata: 
+  investorAddress String
+  investorName String
+  investorTitle String
+  investorEmail String
+
+  // Investment data:
+  purchaseAmount Decimal @db.Money	
+  purchaseDate DateTime @db.Date
+  // Optional investment fields, SAFE notes may or may not have these:
+  valuationCap Decimal? @db.Money	
+  discountRate Decimal? 
+  mfnClause Boolean // Whether a MFN clause should be included in the SAFE note 
+
+  // Owner:
+  userId             String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
