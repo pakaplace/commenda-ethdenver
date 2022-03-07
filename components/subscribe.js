@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Input,
   Button,
@@ -13,13 +13,13 @@ import {
   Box,
   VStack,
   Text,
-} from "@chakra-ui/react";
-import { RssIcon } from "@heroicons/react/solid";
-import { useForm } from "react-hook-form";
+} from '@chakra-ui/react';
+import { RssIcon } from '@heroicons/react/solid';
+import { useForm } from 'react-hook-form';
 
-const Subscribe = ({ direction, ...props }) => {
+function Subscribe({ direction, ...props }) {
   const [isSuccessful, setIsSuccessful] = useState(undefined);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const {
     register,
@@ -27,29 +27,28 @@ const Subscribe = ({ direction, ...props }) => {
     errors,
     formState: { isSubmitting, isSubmitSuccessful, isValid },
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const onSubmit = async (data, e) => {
-    const res = await fetch("/api/addSubscriber", {
+    const res = await fetch('/api/addSubscriber', {
       body: JSON.stringify({
         email: data.email_address,
         referrer_url: window.location.href,
       }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      method: "POST",
+      method: 'POST',
     });
 
     const { error } = await res.json();
 
     if (error) {
       setErrorMessage(error);
-      return;
     } else {
       setIsSuccessful(true);
-      setErrorMessage("");
+      setErrorMessage('');
     }
   };
 
@@ -71,8 +70,8 @@ const Subscribe = ({ direction, ...props }) => {
                   isLoading={isSubmitSuccessful}
                   rounded="lg"
                   w="100%"
-                  minW={{ base: "48", md: "64" }}
-                  bg={useColorModeValue("white", "neutralD.100")}
+                  minW={{ base: '48', md: '64' }}
+                  bg={useColorModeValue('white', 'neutralD.100')}
                 />
                 {/* <FormHelperText>Send max. once per month</FormHelperText> */}
                 {errors.author && (
@@ -81,8 +80,8 @@ const Subscribe = ({ direction, ...props }) => {
               </FormControl>
               <Button
                 mt={4}
-                colorScheme={'red'}
-                bg={'red.400'}
+                colorScheme="red"
+                bg="red.400"
                 _hover={{ bg: 'red.500' }}
                 type="submit"
                 w="100%"
@@ -105,18 +104,16 @@ const Subscribe = ({ direction, ...props }) => {
             </Collapse>
           </>
         ) : (
-          <>
-            <Collapse in={isSuccessful} animateOpacity w="100%">
-              <Alert borderRadius="md" status="success" fontSize="sm">
-                <AlertIcon />
-                Success! Now check your email to confirm your subscription.
-              </Alert>
-            </Collapse>
-          </>
+          <Collapse in={isSuccessful} animateOpacity w="100%">
+            <Alert borderRadius="md" status="success" fontSize="sm">
+              <AlertIcon />
+              Success! Now check your email to confirm your subscription.
+            </Alert>
+          </Collapse>
         )}
       </Stack>
     </chakra.form>
   );
-};
+}
 
 export default Subscribe;

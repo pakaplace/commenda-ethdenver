@@ -1,10 +1,7 @@
-import react, { useState } from "react";
-import NextImage from "next/image";
-import Tweet from "react-tweet-embed";
-import Codeblock from "./codeblock/codeblock";
-import ReactPlayer from "react-player/youtube";
-import Link from "./link";
-
+import react, { useState } from 'react';
+import NextImage from 'next/image';
+import Tweet from 'react-tweet-embed';
+import ReactPlayer from 'react-player/youtube';
 import {
   Alert,
   Box,
@@ -14,78 +11,94 @@ import {
   useColorModeValue,
   Link as ChakraLink,
   AspectRatio,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
+import Codeblock from './codeblock/codeblock';
+import Link from './link';
 
-const Table = (props) => (
-  <chakra.div overflowX="auto">
-    <chakra.table textAlign="left" mt="32px" width="full" {...props} />
-  </chakra.div>
-);
+function Table(props) {
+  return (
+    <chakra.div overflowX="auto">
+      <chakra.table textAlign="left" mt="32px" width="full" {...props} />
+    </chakra.div>
+  );
+}
 
-const THead = (props) => (
-  <chakra.th
-    bg={useColorModeValue("neutral.50", "whiteAlpha.100")}
-    fontWeight="semibold"
-    p={2}
-    fontSize="sm"
-    {...props}
-  />
-);
-
-const VideoPlayer = (props) => (
-  <AspectRatio overflow="hidden" rounded="md" my={6} ratio={16 / 9}>
-    <ReactPlayer
-      width="100%"
-      height="100%"
-      controls={true}
+function THead(props) {
+  return (
+    <chakra.th
+      bg={useColorModeValue('neutral.50', 'whiteAlpha.100')}
+      fontWeight="semibold"
+      p={2}
+      fontSize="sm"
       {...props}
-    ></ReactPlayer>
-  </AspectRatio>
-);
+    />
+  );
+}
 
-const TData = (props) => (
-  <chakra.td
-    p={2}
-    borderTopWidth="1px"
-    borderColor="inherit"
-    fontSize="sm"
-    whiteSpace="normal"
-    {...props}
-  />
-);
+function VideoPlayer(props) {
+  return (
+    <AspectRatio overflow="hidden" rounded="md" my={6} ratio={16 / 9}>
+      <ReactPlayer
+        width="100%"
+        height="100%"
+        controls
+        {...props}
+      />
+    </AspectRatio>
+  );
+}
 
-const Image = (props) => {
+function TData(props) {
+  return (
+    <chakra.td
+      p={2}
+      borderTopWidth="1px"
+      borderColor="inherit"
+      fontSize="sm"
+      whiteSpace="normal"
+      {...props}
+    />
+  );
+}
+
+function Image(props) {
   return (
     <Box
       mt={4}
       rounded="lg"
       borderWidth="1px"
-      borderColor={useColorModeValue("neutral.500", "neutralD.500")}
+      borderColor={useColorModeValue('neutral.500', 'neutralD.500')}
       overflow="hidden"
       lineHeight={0}
     >
       <NextImage {...props} />
     </Box>
   );
-};
+}
 
-const InlineCode = (props) => (
-  <Code
-    apply="mdx.code"
-    bg={useColorModeValue("blue.50", "blue.900")}
-    color={useColorModeValue("blue.600", "blue.200")}
-    rounded="lg"
-    {...props}
-  />
-);
+function InlineCode(props) {
+  return (
+    <Code
+      apply="mdx.code"
+      bg={useColorModeValue('blue.50', 'blue.900')}
+      color={useColorModeValue('blue.600', 'blue.200')}
+      rounded="lg"
+      {...props}
+    />
+  );
+}
 
-const Pre = (props) => <chakra.div my="2em" borderRadius="sm" {...props} />;
+function Pre(props) {
+  return <chakra.div my="2em" borderRadius="sm" {...props} />;
+}
 
-const Embed = (props) => (
-  <Box my={4} rounded="lg" shadow="sm" overflow="hidden">
-    <iframe {...props}></iframe>
-  </Box>
-);
+function Embed(props) {
+  return (
+    <Box my={4} rounded="lg" shadow="sm" overflow="hidden">
+      <iframe {...props} />
+    </Box>
+  );
+}
 
 // const Pre = (props) => <chakra.div my="2em" borderRadius="sm" {...props} />;
 
@@ -109,7 +122,7 @@ const MDXComponents = {
       as="blockquote"
       rounded="4px"
       my="1.5rem"
-      bg={useColorModeValue("blue.50", "#1A273B")}
+      bg={useColorModeValue('blue.50', '#1A273B')}
       {...props}
     />
   ),

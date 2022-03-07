@@ -1,6 +1,7 @@
-const FontFace = () => (
-  <style jsx global>
-    {`
+function FontFace() {
+  return (
+    <style jsx global>
+      {`
       @font-face {
         font-family: "Inter";
         font-style: normal;
@@ -73,7 +74,8 @@ const FontFace = () => (
         src: url(/fonts/Inter.woff2) format("woff2");
       }
     `}
-  </style>
-);
+    </style>
+  );
+}
 
 export default FontFace;

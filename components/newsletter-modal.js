@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -10,10 +10,10 @@ import {
   useDisclosure,
   Button,
   Box,
-} from "@chakra-ui/react";
-import SubscribeCard from "@/components/subscribe-card";
+} from '@chakra-ui/react';
+import SubscribeCard from '@/components/subscribe-card';
 
-const NewsletterModal = () => {
+function NewsletterModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -47,6 +47,6 @@ const NewsletterModal = () => {
       </Modal>
     </>
   );
-};
+}
 
 export default NewsletterModal;

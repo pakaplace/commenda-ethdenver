@@ -1,22 +1,21 @@
-import Head from "next/head";
-import React from "react";
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import { DefaultSeo } from "next-seo";
-import PlausibleProvider from "next-plausible";
-import customTheme from "../theme";
-import FontFace from "@/components/font-face";
-import SEO from "../next-seo.config";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import MobileNavigation from "@/components/mobile-navigation";
-import { GAWrapper } from "../utility/analytics";
+import Head from 'next/head';
+import React from 'react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
+import { DefaultSeo } from 'next-seo';
+import PlausibleProvider from 'next-plausible';
+import { Provider as Web3Provider, NETWORKS } from '@web3-ui/core';
+import { SessionProvider } from 'next-auth/react';
+import customTheme from '../theme';
+import FontFace from '@/components/font-face';
+import SEO from '../next-seo.config';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import MobileNavigation from '@/components/mobile-navigation';
+import { GAWrapper } from '../utility/analytics';
 
-import { Provider as Web3Provider, NETWORKS } from "@web3-ui/core";
-import { SessionProvider } from "next-auth/react"
-
-import "antd/dist/antd.css";
-import "@stream-io/stream-chat-css/dist/css/index.css";
-import "../app.css";
+import 'antd/dist/antd.css';
+import '@stream-io/stream-chat-css/dist/css/index.css';
+import '../app.css';
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
   return (

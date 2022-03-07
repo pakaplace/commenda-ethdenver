@@ -1,7 +1,9 @@
-import { NextSeo, ArticleJsonLd } from "next-seo";
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 
-const BlogSeo = ({ title, summary, publishDate, url, image }) => {
-  console.log("publishDate →", publishDate);
+function BlogSeo({
+  title, summary, publishDate, url, image,
+}) {
+  console.log('publishDate →', publishDate);
   const date = new Date(publishDate).toISOString();
 
   return (
@@ -11,7 +13,7 @@ const BlogSeo = ({ title, summary, publishDate, url, image }) => {
         description={summary}
         canonical={url}
         openGraph={{
-          type: "article",
+          type: 'article',
           article: {
             publishedTime: date,
           },
@@ -41,6 +43,6 @@ const BlogSeo = ({ title, summary, publishDate, url, image }) => {
       />
     </>
   );
-};
+}
 
 export default BlogSeo;

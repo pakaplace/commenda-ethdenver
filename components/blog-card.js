@@ -1,5 +1,5 @@
-import React from "react";
-import { format } from "timeago.js";
+import React from 'react';
+import { format } from 'timeago.js';
 import {
   Box,
   VStack,
@@ -12,18 +12,18 @@ import {
   Icon,
   Divider,
   Center,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   BookOpenIcon,
   EyeIcon,
   VideoCameraIcon,
   PlayIcon,
   ClockIcon,
-} from "@heroicons/react/solid";
-import Link from "@/components/link";
-import readingTime from "reading-time";
+} from '@heroicons/react/solid';
+import readingTime from 'reading-time';
+import Link from '@/components/link';
 
-const BlogCard = ({
+function BlogCard({
   slug,
   publishDate,
   summary,
@@ -33,8 +33,8 @@ const BlogCard = ({
   mdx,
   views,
   videoLength,
-}) => {
-  console.log("banner →", readingTime(mdx));
+}) {
+  console.log('banner →', readingTime(mdx));
   return (
     <Link href={`/blog/${slug}`} unstyled>
       <VStack
@@ -42,8 +42,8 @@ const BlogCard = ({
         // spacing={8}
         rounded="lg"
         borderWidth="1px"
-        bg={useColorModeValue("white", "neutralD.100")}
-        borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+        bg={useColorModeValue('white', 'neutralD.100')}
+        borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
         position="relative"
         align="center"
         px={4}
@@ -51,7 +51,7 @@ const BlogCard = ({
         spacing={4}
         transition="all 0.3s"
         transition-timing-function="spring(1 100 10 10)"
-        _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
+        _hover={{ transform: 'translateY(-4px)', shadow: 'lg' }}
         height="100%"
         // height={48}
       >
@@ -63,12 +63,12 @@ const BlogCard = ({
               rounded="lg"
               overflow="hidden"
               borderWidth="1px"
-              bg={useColorModeValue("white", "neutralD.100")}
-              borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+              bg={useColorModeValue('white', 'neutralD.100')}
+              borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
             >
               <Image src={banner[0].url} objectFit="cover" />
             </AspectRatio>
-            {type === "Video" ? (
+            {type === 'Video' ? (
               <Center
                 position="absolute"
                 top="0"
@@ -85,7 +85,7 @@ const BlogCard = ({
                   as={PlayIcon}
                   w={10}
                   h={10}
-                  color={useColorModeValue("neutral.900", "neutral.900")}
+                  color={useColorModeValue('neutral.900', 'neutral.900')}
                   weight="fill"
                   background="white"
                   rounded="full"
@@ -108,7 +108,7 @@ const BlogCard = ({
               <Text
                 fontSize="lg"
                 fontWeight="bold"
-                color={useColorModeValue("neutral.1100", "neutralD.1100")}
+                color={useColorModeValue('neutral.1100', 'neutralD.1100')}
               >
                 {title}
               </Text>
@@ -125,7 +125,7 @@ const BlogCard = ({
             fontSize="sm"
             fontWeight="400"
             spacing={1}
-            color={useColorModeValue("neutral.900", "neutralD.900")}
+            color={useColorModeValue('neutral.900', 'neutralD.900')}
           >
             {new Date() - new Date(publishDate) < 1000 * 60 * 60 * 24 * 7 ? (
               <Tag size="sm" colorScheme="green" mr={1}>
@@ -134,12 +134,20 @@ const BlogCard = ({
             ) : undefined}
             <HStack spacing={1} mr={1}>
               <Icon as={EyeIcon} w={4} h={4} weight="duotone" />
-              <Text>{views} views</Text>
+              <Text>
+                {views}
+                {' '}
+                views
+              </Text>
             </HStack>
-            {type === "Video" ? (
+            {type === 'Video' ? (
               <HStack>
                 <Icon as={ClockIcon} w={4} h={4} weight="duotone" />
-                <Text>{videoLength} min video</Text>
+                <Text>
+                  {videoLength}
+                  {' '}
+                  min video
+                </Text>
               </HStack>
             ) : (
               <HStack spacing={1}>
@@ -154,6 +162,6 @@ const BlogCard = ({
       </VStack>
     </Link>
   );
-};
+}
 
 export default BlogCard;

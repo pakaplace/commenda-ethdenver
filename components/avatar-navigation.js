@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Popover,
   PopoverTrigger,
@@ -18,11 +18,11 @@ import {
   SimpleGrid,
   Button,
   Box,
-} from "@chakra-ui/react";
-import Image from "next/image";
-import Link from "next/link";
+} from '@chakra-ui/react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const AvatarNavigation = () => {
+function AvatarNavigation() {
   const [isOpen, setIsOpen] = React.useState(false);
   const open = () => setIsOpen(!isOpen);
   const close = () => setIsOpen(false);
@@ -134,6 +134,6 @@ const AvatarNavigation = () => {
       </PopoverContent>
     </Popover> */
   }
-};
+}
 
 export default AvatarNavigation;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Heading,
   VStack,
@@ -9,21 +9,21 @@ import {
   Link,
   LightMode,
   useColorModeValue,
-} from "@chakra-ui/react";
-import { TwitterLogo } from "phosphor-react";
-import { ArrowNarrowRight } from "@heroicons/react/solid";
+} from '@chakra-ui/react';
+import { TwitterLogo } from 'phosphor-react';
+import { ArrowNarrowRight } from '@heroicons/react/solid';
 
-const TwitterCard = ({ title, slug }) => {
-  const url = "https://danielwirtz.com/blog/" + slug;
+function TwitterCard({ title, slug }) {
+  const url = `https://danielwirtz.com/blog/${slug}`;
 
   return (
     <VStack
       p={4}
-      bg={useColorModeValue("blue.50", "blue.100")}
+      bg={useColorModeValue('blue.50', 'blue.100')}
       rounded="lg"
       borderWidth="1px"
-      color={useColorModeValue("blue.800", "blue.800")}
-      borderColor={useColorModeValue("blue.100", "blue.200")}
+      color={useColorModeValue('blue.800', 'blue.800')}
+      borderColor={useColorModeValue('blue.100', 'blue.200')}
       textAlign="left"
       align="stretch"
       spacing={4}
@@ -33,7 +33,7 @@ const TwitterCard = ({ title, slug }) => {
       <Text>Did you like the article?</Text>
       <Link
         href={`https://twitter.com/intent/tweet?text=${
-          encodeURIComponent(title) + " " + "by @wirtzdan"
+          `${encodeURIComponent(title)} ` + 'by @wirtzdan'
         }&url=${encodeURIComponent(url)}`}
         unstyled
       >
@@ -43,7 +43,7 @@ const TwitterCard = ({ title, slug }) => {
             colorScheme="blue"
             transition="all 0.25s"
             transition-timing-function="spring(1 100 10 10)"
-            _hover={{ transform: "translateY(-4px)", shadow: "sm" }}
+            _hover={{ transform: 'translateY(-4px)', shadow: 'sm' }}
           >
             Share on Twitter
           </Button>
@@ -51,6 +51,6 @@ const TwitterCard = ({ title, slug }) => {
       </Link>
     </VStack>
   );
-};
+}
 
 export default TwitterCard;

@@ -1,7 +1,7 @@
-const Airtable = require("airtable");
+const Airtable = require('airtable');
 
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  process.env.AIRTABLE_BASE_ID
+  process.env.AIRTABLE_BASE_ID,
 );
 
 export default function handler(req, res) {
@@ -18,7 +18,7 @@ export default function handler(req, res) {
 
   function sendSuggestion(data) {
     const { title, author, message } = data;
-    const table = base("Suggestions");
+    const table = base('Suggestions');
 
     return new Promise((resolve, reject) => {
       table.create(
@@ -27,12 +27,12 @@ export default function handler(req, res) {
           Author: author,
           Message: message,
         },
-        function (err, record) {
+        (err, record) => {
           if (err) {
             reject();
           }
           resolve();
-        }
+        },
       );
     });
   }

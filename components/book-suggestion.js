@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   VStack,
@@ -18,12 +18,12 @@ import {
   Alert,
   AlertIcon,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
-import { MailIcon } from "@heroicons/react/solid";
+} from '@chakra-ui/react';
+import { useForm } from 'react-hook-form';
+import { MailIcon } from '@heroicons/react/solid';
 // import { sendSuggestion } from "@/lib/airtable";
 
-const BookSuggestion = () => {
+function BookSuggestion() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     register,
@@ -33,8 +33,8 @@ const BookSuggestion = () => {
     formState: { isSubmitting, isSubmitSuccessful },
   } = useForm();
   const onSubmit = async (data) => {
-    await fetch("/api/sendSuggestion", {
-      method: "POST",
+    await fetch('/api/sendSuggestion', {
+      method: 'POST',
       body: JSON.stringify(data),
     });
   };
@@ -112,6 +112,6 @@ const BookSuggestion = () => {
       </Modal>
     </Box>
   );
-};
+}
 
 export default BookSuggestion;

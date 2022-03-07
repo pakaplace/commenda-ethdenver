@@ -1,7 +1,9 @@
-import React from "react";
-import { VStack, Text, useColorModeValue, Icon } from "@chakra-ui/react";
+import React from 'react';
+import {
+  VStack, Text, useColorModeValue, Icon,
+} from '@chakra-ui/react';
 
-const MobileMenuButton = ({ label, icon, ...rest }) => {
+function MobileMenuButton({ label, icon, ...rest }) {
   return (
     <VStack
       as="button"
@@ -9,19 +11,19 @@ const MobileMenuButton = ({ label, icon, ...rest }) => {
       rounded="md"
       px={6}
       {...rest}
-      color={useColorModeValue("neutral.1100", "neutralD.1100")}
+      color={useColorModeValue('neutral.1100', 'neutralD.1100')}
     >
       <Icon>{icon}</Icon>
 
       <Text
         fontSize="xs"
         fontWeight="500"
-        color={useColorModeValue("neutral.1000", "neutralD.1000")}
+        color={useColorModeValue('neutral.1000', 'neutralD.1000')}
       >
         {label}
       </Text>
     </VStack>
   );
-};
+}
 
 export default MobileMenuButton;

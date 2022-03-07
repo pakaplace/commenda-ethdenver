@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Box,
   Drawer,
@@ -19,19 +19,19 @@ import {
   Collapse,
   Text,
   FormHelperText,
-} from "@chakra-ui/react";
-import { RssIcon, MailIcon, MenuIcon } from "@heroicons/react/outline";
-import { useForm } from "react-hook-form";
-import MobileMenuButton from "./mobile-menu-button";
-import SubscribeCard from "@/components/subscribe-card";
+} from '@chakra-ui/react';
+import { RssIcon, MailIcon, MenuIcon } from '@heroicons/react/outline';
+import { useForm } from 'react-hook-form';
+import MobileMenuButton from './mobile-menu-button';
+import SubscribeCard from '@/components/subscribe-card';
 
-const NewsletterDrawer = ({ mobile, placement }) => {
+function NewsletterDrawer({ mobile, placement }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
   return (
     <Box>
-      {placement === "blog" ? (
+      {placement === 'blog' ? (
         <Button
           leftIcon={<RssIcon size={20} />}
           onClick={onOpen}
@@ -56,7 +56,7 @@ const NewsletterDrawer = ({ mobile, placement }) => {
         <DrawerOverlay>
           <DrawerContent
             borderTopRadius="6px"
-            bg={useColorModeValue("white", "neutralD.50")}
+            bg={useColorModeValue('white', 'neutralD.50')}
           >
             <DrawerCloseButton />
             <DrawerHeader>Subscribe</DrawerHeader>
@@ -116,6 +116,6 @@ const NewsletterDrawer = ({ mobile, placement }) => {
       </Drawer>
     </Box>
   );
-};
+}
 
 export default NewsletterDrawer;

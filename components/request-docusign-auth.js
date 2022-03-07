@@ -1,4 +1,4 @@
-const RedirectToDocusign = () => {
+function RedirectToDocusign() {
   const searchParams = new URLSearchParams({
     response_type: 'code',
     scope: 'signature',
@@ -8,6 +8,6 @@ const RedirectToDocusign = () => {
   });
   window.location.href = `https://account-d.docusign.com/oauth/auth?${searchParams}`;
   return null;
-};
+}
 
 export default RedirectToDocusign;

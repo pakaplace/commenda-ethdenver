@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   HStack,
   VStack,
@@ -10,36 +10,36 @@ import {
   Box,
   AspectRatio,
   Image as ChakraImage,
-} from "@chakra-ui/react";
-import Image from "./image";
-import { usePalette } from "react-palette";
-import Link from "@/components/link";
+} from '@chakra-ui/react';
+import { usePalette } from 'react-palette';
+import Image from './image';
+import Link from '@/components/link';
 
-const ToolCard = ({
+function ToolCard({
   name,
   platform,
   image,
   link,
   isAffiliate,
   description,
-}) => {
+}) {
   const { data, loading, error } = usePalette(image[0].thumbnails.large.url);
 
   return (
     <Link href={link} unstyled>
       <HStack
         p={4}
-        bg={useColorModeValue("white", "neutralD.100")}
+        bg={useColorModeValue('white', 'neutralD.100')}
         rounded="lg"
         borderWidth="1px"
-        borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+        borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
         w="100%"
         textAlign="left"
         align="start"
         spacing={4}
         transition="all 0.25s"
         transition-timing-function="spring(1 100 10 10)"
-        _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
+        _hover={{ transform: 'translateY(-4px)', shadow: 'lg' }}
       >
         <Box
           rounded="lg"
@@ -58,7 +58,7 @@ const ToolCard = ({
             left={0}
             right={0}
             opacity={0.25}
-          ></Box>
+          />
           {/* <ChakraImage
             src={image ? image[0].thumbnails.large.url : "/"}
             top={0}
@@ -74,12 +74,12 @@ const ToolCard = ({
             position="absolute"
           ></ChakraImage> */}
           <Image
-            src={image ? image[0].thumbnails.large.url : "/"}
+            src={image ? image[0].thumbnails.large.url : '/'}
             height={36}
             width={36}
             layout="fixed"
             rounded="md"
-          ></Image>
+          />
         </Box>
 
         <VStack
@@ -95,7 +95,7 @@ const ToolCard = ({
             </Text>
             <Text
               fontSize="sm"
-              color={useColorModeValue("neutral.900", "neutralD.900")}
+              color={useColorModeValue('neutral.900', 'neutralD.900')}
             >
               {description}
             </Text>
@@ -104,6 +104,6 @@ const ToolCard = ({
       </HStack>
     </Link>
   );
-};
+}
 
 export default ToolCard;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
   Drawer,
@@ -24,21 +24,21 @@ import {
   useColorModeValue,
   Divider,
   HStack,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   GithubLogo,
   LinkedinLogo,
   TwitterLogo,
   YoutubeLogo,
-} from "phosphor-react";
-import { MailIcon, MenuIcon } from "@heroicons/react/solid";
-import { useForm } from "react-hook-form";
-import MobileMenuButton from "./mobile-menu-button";
-import MobileMenuItem from "./mobile-menu-item";
-import ThemeToggle from "./theme-toggle";
-import Link from "@/components/link";
+} from 'phosphor-react';
+import { MailIcon, MenuIcon } from '@heroicons/react/solid';
+import { useForm } from 'react-hook-form';
+import MobileMenuButton from './mobile-menu-button';
+import MobileMenuItem from './mobile-menu-item';
+import ThemeToggle from './theme-toggle';
+import Link from '@/components/link';
 
-const MobileMenuToggle = ({ mobile }) => {
+function MobileMenuToggle({ mobile }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
@@ -67,7 +67,7 @@ const MobileMenuToggle = ({ mobile }) => {
         <DrawerOverlay>
           <DrawerContent
             borderTopRadius="6px"
-            bg={useColorModeValue("neutral.50", "neutralD.50")}
+            bg={useColorModeValue('neutral.50', 'neutralD.50')}
           >
             <DrawerCloseButton />
             <DrawerHeader>Menu</DrawerHeader>
@@ -97,10 +97,10 @@ const MobileMenuToggle = ({ mobile }) => {
                         size="sm"
                         icon={<TwitterLogo weight="fill" />}
                         color={useColorModeValue(
-                          "neutral.800",
-                          "neutralD.1000"
+                          'neutral.800',
+                          'neutralD.1000',
                         )}
-                      ></IconButton>
+                      />
                     </Link>
                     <Link
                       href="https://www.linkedin.com/in/wirtzdan/"
@@ -111,10 +111,10 @@ const MobileMenuToggle = ({ mobile }) => {
                         size="sm"
                         icon={<LinkedinLogo weight="fill" />}
                         color={useColorModeValue(
-                          "neutral.800",
-                          "neutralD.1000"
+                          'neutral.800',
+                          'neutralD.1000',
                         )}
-                      ></IconButton>
+                      />
                     </Link>
                     <Link
                       href="https://github.com/wirtzdan"
@@ -125,10 +125,10 @@ const MobileMenuToggle = ({ mobile }) => {
                         size="sm"
                         icon={<GithubLogo weight="fill" />}
                         color={useColorModeValue(
-                          "neutral.800",
-                          "neutralD.1000"
+                          'neutral.800',
+                          'neutralD.1000',
                         )}
-                      ></IconButton>
+                      />
                     </Link>
                     <Link
                       href="https://www.youtube.com/channel/UCje_bQMr6F45x0Auii7IOvA"
@@ -139,10 +139,10 @@ const MobileMenuToggle = ({ mobile }) => {
                         size="sm"
                         icon={<YoutubeLogo weight="fill" />}
                         color={useColorModeValue(
-                          "neutral.800",
-                          "neutralD.1000"
+                          'neutral.800',
+                          'neutralD.1000',
                         )}
-                      ></IconButton>
+                      />
                     </Link>
                   </HStack>
                   <ThemeToggle mobile />
@@ -154,6 +154,6 @@ const MobileMenuToggle = ({ mobile }) => {
       </Drawer>
     </Box>
   );
-};
+}
 
 export default MobileMenuToggle;

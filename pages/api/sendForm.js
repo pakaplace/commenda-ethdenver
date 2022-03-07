@@ -1,18 +1,18 @@
 import { Prisma, PrismaClient } from '@prisma/client';
-import { getSession } from "next-auth/react"
+import { getSession } from 'next-auth/react';
 import docusign from 'docusign-esign';
 import fs from 'fs';
 import { env } from 'process';
 import { notValidDateWarning } from 'stream-chat-react';
 
-// TODO: Get these from request. 
+// TODO: Get these from request.
 
 const RECIPIENT = {
   name: 'Rohan Ramchand',
   email: 'rohan@ramchand.me',
 };
 
-const SENDER  = {
+const SENDER = {
   name: 'Yaacov Tarko',
   email: 'yaacov@commenda.io',
 };
@@ -29,18 +29,18 @@ const sendForm = async (req, res) => {
   // this should be a post
   const session = await getSession({ req });
   if (!session) {
-      console.log("Unauthenticated:")
-      return res.status(403).json({ error: "Unauthenticated" });
+    console.log('Unauthenticated:');
+    return res.status(403).json({ error: 'Unauthenticated' });
   }
   const prisma = new PrismaClient();
   const user = await prisma.user.findUnique({
-      where: {
-        email: session.user.email,
-      },
-      select: {
-        docusignAccessToken: true,
-        docusignAccessTokenExpires: true,
-      }
+    where: {
+      email: session.user.email,
+    },
+    select: {
+      docusignAccessToken: true,
+      docusignAccessTokenExpires: true,
+    },
   });
   const envelope = new docusign.EnvelopeDefinition();
   envelope.templateId = TEMPLATE_ID;
@@ -59,15 +59,10 @@ const sendForm = async (req, res) => {
   api.addDefaultHeader('Authorization', `Bearer ${user.docusignAccessToken}`);
 
   const envelopesApi = new docusign.EnvelopesApi(api);
-  const results = await envelopesApi.createEnvelope(
-    DOCUSIGN_ACCOUNT_ID, {envelopeDefinition: envelope});
+  const results = await envelopesApi.createEnvelope(DOCUSIGN_ACCOUNT_ID, { envelopeDefinition: envelope });
   console.log(results);
 
   return res.status(200).json({});
-
-
- 
-
 };
 
 export default sendForm;

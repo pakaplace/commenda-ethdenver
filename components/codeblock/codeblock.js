@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Box,
   HStack,
@@ -8,20 +8,22 @@ import {
   useColorModeValue,
   IconButton,
   Icon,
-} from "@chakra-ui/react";
-import Highlight from "./highlight";
-import { CheckIcon, DuplicateIcon } from "@heroicons/react/solid";
+} from '@chakra-ui/react';
+import { CheckIcon, DuplicateIcon } from '@heroicons/react/solid';
+import Highlight from './highlight';
 
-const Codeblock = (props) => {
+function Codeblock(props) {
   const showLines = true;
 
-  const { className, children, viewlines, metastring, ln, ...rest } = props;
+  const {
+    className, children, viewlines, metastring, ln, ...rest
+  } = props;
 
   const [editorCode] = useState(children);
 
   const { hasCopied, onCopy } = useClipboard(editorCode);
 
-  const language = className?.replace(/language-/, "");
+  const language = className?.replace(/language-/, '');
 
   const title = metastring?.match(/title="(.*?)"/)[1];
 
@@ -29,10 +31,10 @@ const Codeblock = (props) => {
     <Box
       rounded="md"
       overflow="hidden"
-      bg={useColorModeValue("white", "neutralD.100")}
+      bg={useColorModeValue('white', 'neutralD.100')}
       my={4}
       borderWidth="1px"
-      borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+      borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
     >
       {title ? (
         <HStack
@@ -41,12 +43,12 @@ const Codeblock = (props) => {
           justifyContent="space-between"
           alignItems="center"
           borderBottomWidth="1px"
-          borderBottomColor={useColorModeValue("neutral.400", "neutralD.400")}
+          borderBottomColor={useColorModeValue('neutral.400', 'neutralD.400')}
         >
           <Text
             fontSize="sm"
             fontWeight="500"
-            color={useColorModeValue("neutral.1000", "neutralD.1000")}
+            color={useColorModeValue('neutral.1000', 'neutralD.1000')}
           >
             {title}
           </Text>
@@ -57,12 +59,12 @@ const Codeblock = (props) => {
               variant="ghost"
               color={
                 hasCopied
-                  ? useColorModeValue("green.600", "green.100")
-                  : useColorModeValue("neutral.1000", "neutralD.1000")
+                  ? useColorModeValue('green.600', 'green.100')
+                  : useColorModeValue('neutral.1000', 'neutralD.1000')
               }
               bg={
                 hasCopied
-                  ? useColorModeValue("green.50", "green.800")
+                  ? useColorModeValue('green.50', 'green.800')
                   : undefined
               }
               leftIcon={
@@ -73,7 +75,7 @@ const Codeblock = (props) => {
                 )
               }
             >
-              {hasCopied ? "Copied" : "Copy"}
+              {hasCopied ? 'Copied' : 'Copy'}
             </Button>
           </HStack>
         </HStack>
@@ -87,6 +89,6 @@ const Codeblock = (props) => {
       />
     </Box>
   );
-};
+}
 
 export default Codeblock;

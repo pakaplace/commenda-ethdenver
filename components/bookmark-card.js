@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Box,
   Image,
@@ -20,27 +20,29 @@ import {
   ModalHeader,
   Center,
   Fade,
-} from "@chakra-ui/react";
-import { format } from "timeago.js";
-import ReactPlayer from "react-player/lazy";
+} from '@chakra-ui/react';
+import { format } from 'timeago.js';
+import ReactPlayer from 'react-player/lazy';
 // import { Link, Play } from "@heroicons/react/solid";
-import { ImageSquare } from "phosphor-react";
+import { ImageSquare } from 'phosphor-react';
 
-const ImageFallback = () => {
+function ImageFallback() {
   return (
-    <Box bg={useColorModeValue("gray.200", "gray.700")}>
+    <Box bg={useColorModeValue('gray.200', 'gray.700')}>
       <Icon
         w={10}
         h={10}
         as={ImageSquare}
-        color={useColorModeValue("gray.300", "neutralD.100")}
+        color={useColorModeValue('gray.300', 'neutralD.100')}
       />
     </Box>
   );
-};
+}
 
-const BookmarkCard = (props) => {
-  const { title, excerpt, cover, type, link, created } = props;
+function BookmarkCard(props) {
+  const {
+    title, excerpt, cover, type, link, created,
+  } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -64,14 +66,14 @@ const BookmarkCard = (props) => {
         w="100%"
         rounded="lg"
         borderWidth="1px"
-        bg={useColorModeValue("white", "neutralD.100")}
-        borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+        bg={useColorModeValue('white', 'neutralD.100')}
+        borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
         transition="all 0.25s"
         transition-timing-function="spring(1 100 10 10)"
         _hover={{
-          transform: "translateY(-4px)",
-          shadow: "lg",
-          textDecoration: "none",
+          transform: 'translateY(-4px)',
+          shadow: 'lg',
+          textDecoration: 'none',
         }}
         overflow="hidden"
         align="start"
@@ -83,7 +85,7 @@ const BookmarkCard = (props) => {
             maxW="400px"
             w="100%"
             borderBottomWidth="1px"
-            borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+            borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
           >
             <Image src={cover} fallback={<ImageFallback />} objectFit="cover" />
           </AspectRatio>
@@ -111,7 +113,7 @@ const BookmarkCard = (props) => {
             <Text
               fontSize="xs"
               fontWeight="500"
-              color={useColorModeValue("neutral.900", "neutralD.900")}
+              color={useColorModeValue('neutral.900', 'neutralD.900')}
               textTransform="capitalize"
             >
               {type}
@@ -122,9 +124,11 @@ const BookmarkCard = (props) => {
             <Text
               fontSize="xs"
               fontWeight="400"
-              color={useColorModeValue("neutral.900", "neutralD.900")}
+              color={useColorModeValue('neutral.900', 'neutralD.900')}
             >
-              – {format(created)}
+              –
+              {' '}
+              {format(created)}
             </Text>
           </HStack>
         </VStack>
@@ -133,12 +137,12 @@ const BookmarkCard = (props) => {
         <ModalOverlay />
         <ModalContent
           bg="none"
-          maxW={type === "video" ? "auto" : "28rem"}
+          maxW={type === 'video' ? 'auto' : '28rem'}
           w="auto"
         >
           <ModalBody p={0} rounded="lg" overflow="hidden" bg="none">
             <Center>
-              {type == "image" ? (
+              {type == 'image' ? (
                 <Image src={cover} rounded="lg" />
               ) : (
                 <ReactPlayer url={link} controls playing />
@@ -149,6 +153,6 @@ const BookmarkCard = (props) => {
       </Modal>
     </Box>
   );
-};
+}
 
 export default BookmarkCard;

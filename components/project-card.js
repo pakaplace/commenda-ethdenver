@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   HStack,
   VStack,
@@ -7,21 +7,23 @@ import {
   Tag,
   Box,
   Image as ChakraImage,
-} from "@chakra-ui/react";
-import Image from "./image";
-import { usePalette } from "react-palette";
-import Link from "@/components/link";
+} from '@chakra-ui/react';
+import { usePalette } from 'react-palette';
+import Image from './image';
+import Link from '@/components/link';
 
-const ProjectCard = ({ name, description, logo, link, type }) => {
+function ProjectCard({
+  name, description, logo, link, type,
+}) {
   const { data, loading, error } = usePalette(logo[0].thumbnails.large.url);
 
   const getTypeColor = (type) => {
-    if (type === "Web App") {
-      return "teal";
-    } else if (type === "Extension") {
-      return "blue";
-    } else if (type === "Community") {
-      return "orange";
+    if (type === 'Web App') {
+      return 'teal';
+    } if (type === 'Extension') {
+      return 'blue';
+    } if (type === 'Community') {
+      return 'orange';
     }
   };
 
@@ -29,10 +31,10 @@ const ProjectCard = ({ name, description, logo, link, type }) => {
     <Link href={link} unstyled>
       <HStack
         p={4}
-        bg={useColorModeValue("white", "neutralD.100")}
+        bg={useColorModeValue('white', 'neutralD.100')}
         rounded="lg"
         borderWidth="1px"
-        borderColor={useColorModeValue("neutral.400", "neutralD.400")}
+        borderColor={useColorModeValue('neutral.400', 'neutralD.400')}
         w="100%"
         h="100%"
         textAlign="left"
@@ -40,7 +42,7 @@ const ProjectCard = ({ name, description, logo, link, type }) => {
         spacing={4}
         transition="all 0.25s"
         transition-timing-function="spring(1 100 10 10)"
-        _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
+        _hover={{ transform: 'translateY(-4px)', shadow: 'lg' }}
       >
         <Box
           rounded="lg"
@@ -58,14 +60,14 @@ const ProjectCard = ({ name, description, logo, link, type }) => {
             left={0}
             right={0}
             opacity={0.25}
-          ></Box>
+          />
           <Image
-            src={logo ? logo[0].thumbnails.large.url : "/"}
+            src={logo ? logo[0].thumbnails.large.url : '/'}
             height={36}
             width={36}
             layout="fixed"
             rounded="md"
-          ></Image>
+          />
         </Box>
 
         <VStack align="start" justify="flex-start" spacing={1}>
@@ -81,7 +83,7 @@ const ProjectCard = ({ name, description, logo, link, type }) => {
 
             <Text
               fontSize="sm"
-              color={useColorModeValue("neutral.1000", "neutralD.1000")}
+              color={useColorModeValue('neutral.1000', 'neutralD.1000')}
             >
               {description}
             </Text>
@@ -90,6 +92,6 @@ const ProjectCard = ({ name, description, logo, link, type }) => {
       </HStack>
     </Link>
   );
-};
+}
 
 export default ProjectCard;

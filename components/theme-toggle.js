@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   IconButton,
   Icon,
@@ -6,14 +6,14 @@ import {
   ScaleFade,
   Tooltip,
   Button,
-} from "@chakra-ui/react";
-import { SunIcon, MoonIcon } from "@heroicons/react/outline";
-import useSound from "use-sound";
-import MobileMenuButton from "./mobile-menu-button";
+} from '@chakra-ui/react';
+import { SunIcon, MoonIcon } from '@heroicons/react/outline';
+import useSound from 'use-sound';
+import MobileMenuButton from './mobile-menu-button';
 
-const ThemeToggle = ({ mobile }) => {
+function ThemeToggle({ mobile }) {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [play] = useSound("/lightswitch.mp3", {
+  const [play] = useSound('/lightswitch.mp3', {
     volume: 0.05,
     sprite: {
       on: [0, 300],
@@ -23,19 +23,19 @@ const ThemeToggle = ({ mobile }) => {
 
   const handleClick = () => {
     toggleColorMode();
-    colorMode === "dark" ? play({ id: "on" }) : play({ id: "off" });
+    colorMode === 'dark' ? play({ id: 'on' }) : play({ id: 'off' });
   };
 
   return (
     <Tooltip
-      label={colorMode === "dark" ? "Light mode" : "Dark mode"}
+      label={colorMode === 'dark' ? 'Light mode' : 'Dark mode'}
       aria-label="A tooltip"
     >
       {mobile ? (
         <Button
           size="sm"
           leftIcon={
-            colorMode === "dark" ? (
+            colorMode === 'dark' ? (
               <Icon as={SunIcon} />
             ) : (
               <Icon as={MoonIcon} />
@@ -43,15 +43,15 @@ const ThemeToggle = ({ mobile }) => {
           }
           onClick={handleClick}
         >
-          {colorMode === "dark" ? "Light Mode" : "Dark Mode"}
+          {colorMode === 'dark' ? 'Light Mode' : 'Dark Mode'}
         </Button>
       ) : (
         <IconButton
           isRound
           aria-label="Switch theme"
-          variant={mobile ? "ghost" : undefined}
+          variant={mobile ? 'ghost' : undefined}
           icon={
-            colorMode === "dark" ? (
+            colorMode === 'dark' ? (
               <Icon as={SunIcon} />
             ) : (
               <Icon as={MoonIcon} />
@@ -62,5 +62,5 @@ const ThemeToggle = ({ mobile }) => {
       )}
     </Tooltip>
   );
-};
+}
 export default ThemeToggle;
