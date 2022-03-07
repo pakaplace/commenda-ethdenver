@@ -10,11 +10,6 @@ import {
 } from '@chakra-ui/react';
 import { PencilAltIcon, MailIcon, DocumentReportIcon } from '@heroicons/react/outline';
 import { motion, useCycle } from 'framer-motion';
-import Link from 'next/link';
-import MenuToggle from './mobile-menu-toggle';
-import MobileMenuItem from './mobile-menu-item';
-import ThemeToggle from './theme-toggle';
-import NewsletterDrawer from './newsletter-drawer';
 import MobileMenuButton from './mobile-menu-button';
 
 function MobileNavigation() {
