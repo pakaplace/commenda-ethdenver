@@ -1,4 +1,6 @@
 import React from 'react';
+import { signIn, getSession } from 'next-auth/react';
+
 import {
   chakra,
   VStack,
@@ -8,13 +10,12 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { ConnectWallet } from '@web3-ui/core';
 
 import ThemeToggle from './theme-toggle';
 import Container from './container';
 import ButtonWithModal from './button-with-modal';
-import RedirectToDocusign from './request-docusign-auth.js';
 import SignInSignOutButton from './sign-in-sign-out-button';
 
 function NavLink(props) {
@@ -73,9 +74,15 @@ function Header() {
             <HStack ml={-4} spacing={2}>
               <NavLink href="/" name="Commenda" />
               <WrappedConnectWalletButton borderColor="green.500" width="40px" />
-              <ButtonWithModal ButtonText="Generate SAFE" ModalTitle="Generate SAFE Note">
-                <RedirectToDocusign />
-              </ButtonWithModal>
+              <Button name="Generate SAFE"
+              onClick={()=>{
+                const {data: session} = getSession();
+                if (!session) {
+                  signIn(null, {callbackUrl: "/form"});
+                }
+                useRouter().push("/form")
+              
+              }} > Generate SAFE </Button>
             </HStack>
             <HStack>
               <SignInSignOutButton />

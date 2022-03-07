@@ -49,7 +49,6 @@ const authenticate = async () => {
   );
 
   const { accounts } = await api.getUserInfo(accessToken);
-  console.log(accounts);
   const userInfo = accounts.find(acc => acc.isDefault === 'true');
   return {
     accessToken,
@@ -62,7 +61,13 @@ const sendForm = async (req, res) => {
   // if (req.method !== 'POST') {
   //   return res.status(405).send({ message: 'Only POST requests allowed' });
   // }
-  // req.body = REQ_BODY;
+
+  const {data: session} = getSession();
+  if (!session) {
+    return res.status(403);
+  }
+
+  req.body = REQ_BODY;
 
   let token;
   try {
@@ -76,8 +81,6 @@ const sendForm = async (req, res) => {
       return res.status(500);
     }
   }
-
-  console.log(token);
 
   const envelope = new docusign.EnvelopeDefinition();
   envelope.templateId = process.env.DOCUSIGN_TEMPLATE_ID;
@@ -117,6 +120,7 @@ const sendForm = async (req, res) => {
     console.log(results);
   } catch (e) {
     console.log(e);
+    return res.status(400);
   }
   // Preview: (doesn't work:  A value was not found for parameter 'returnUrl')
   // envelopesApi.createEnvelopeRecipientPreview(DOCUSIGN_ACCOUNT_ID, results.envelopeId, (error, data, response) => {
