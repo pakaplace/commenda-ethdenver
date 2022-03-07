@@ -43,6 +43,7 @@ import Container from './container';
 import ButtonWithModal from './button-with-modal';
 import AvatarNavigation from './avatar-navigation';
 import UploadFileForm from './upload-file-form';
+import RedirectToDocusign from './request-docusign-auth.js';
 import SignInSignOutButton from './sign-in-sign-out-button';
 
 function NavLink(props) {
@@ -139,7 +140,7 @@ function Header() {
               <NavLink href="/newsletter" name="Newsletter" /> */}
               <WrappedConnectWalletButton borderColor="green.500" width="40px" />
               <ButtonWithModal ButtonText="Upload SAFE" ModalTitle="Upload SAFE Note" >
-                  <UploadFileForm/>
+                  <RedirectToDocusign/>
               </ButtonWithModal>
               {/* <div>{connection.ens || connection.userAddress}</div> */}
               {/* <NavLink href="https://airtable.com/shrmNHnNEN7uQiSZF" name="Report Your Earnings" /> */}
