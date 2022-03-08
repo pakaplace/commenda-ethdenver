@@ -16,6 +16,8 @@ import { ConnectWallet } from '@web3-ui/core';
 import ThemeToggle from './theme-toggle';
 import Container from './container';
 import ButtonWithModal from './button-with-modal';
+import LoginWithMagicLinks from './login-with-magic-links';
+
 import SignInSignOutButton from './sign-in-sign-out-button';
 
 function NavLink(props) {
@@ -85,6 +87,10 @@ function Header() {
               }} > Generate SAFE </Button>
             </HStack>
             <HStack>
+              <ButtonWithModal>
+                <LoginWithMagicLinks/>
+                Log In
+              </ButtonWithModal>
               <SignInSignOutButton />
               <ThemeToggle />
             </HStack>

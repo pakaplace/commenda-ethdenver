@@ -3,13 +3,12 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
   Button,
-  Lorem,
 } from '@chakra-ui/react';
+import React from 'react';
 
 export function ButtonWithModal(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
